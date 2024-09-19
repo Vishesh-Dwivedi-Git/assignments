@@ -26,16 +26,28 @@
     import {quizData} from "/data.js"
     console.log("in the fuction");
     let i=0;
+    let correct=0;
     let len=quizData.length;
     window.start=function start(){
         console.log("in the start")
         document.getElementById("btnS").remove();
         showQuestion(i);
     }
-    window.submiT=function submiT(){
+    window.submiT=function submiT(index){
+        console.log(`submit${i}`);
+        const question=quizData[index];
+        const radios=document.getElementsByName("option");
+        for(const radio of radios){
+            if(radio.checked){
+                if(radio.value===question.correct) {
+                    correct++;
+                }
+            }
+        }
+
         const main=document.getElementById("main");
         if(i>=len){
-            main.innerHTML=`<h1>Thank you got participating in the Quiz</h1>`;
+            main.innerHTML=`<h1>Thank you got participating in the Quiz</h1> <h1>Your Score is ${correct}/${len} </h1>`;
             return;
         }
         showQuestion(i);
@@ -43,24 +55,24 @@
     }
 
     function showQuestion(index){
+        console.log(index);
         const questonEle=document.getElementById("qs");
         const option=document.getElementById("optn");
         const submit=document.getElementById("sub");
         const question=quizData[index];
         questonEle.innerHTML=question.question;
         option.innerHTML=`
-                <input type="radio" name="option" id="a" value="a">
-                <label for="a">${question.a}</label><br>
-                <input type="radio" name="option" id="b" value="b">
-                <label for="b">${question.b}</label><br>
-                <input type="radio" name="option" id="c" value="c">
-                <label for="c">${question.c}</label><br>
-                <input type="radio" name="option" id="d" value="d">
-                <label for="d">${question.d}</label>
+                <div> 
+                <input type="radio" name="option" id="a" value="a"> <label for="a">${question.a}</label></div>
+              <div> 
+                <input type="radio" name="option" id="b" value="b"> <label for="b">${question.b}</label></div>
+               <div> 
+                <input type="radio" name="option" id="c" value="c"> <label for="c">${question.c}</label></div>
+              <div>
+                <input type="radio" name="option" id="d" value="d"> <label for="d">${question.d}</label></div>
             `;
-        submit.innerHTML=`<button id="subBtn" type="button" onClick="submiT()" class="bg-red-400 rounded-xl font-mono p-3">submit<button>`
-            document.getElementById("subBtn").addEventListener("click", submiT);
-        i++;
+        submit.innerHTML=`<button id="subBtn" type="button" onClick="submiT(${index})" class="bg-red-400 rounded-xl font-mono p-3">submit<button>`;
+            i++;
     }
 
 </script>
