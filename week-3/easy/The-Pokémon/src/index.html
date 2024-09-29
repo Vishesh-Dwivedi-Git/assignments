@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Pokemon</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <link href="./output.css" rel="stylesheet">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black; /* Set background to black */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      
+    }
+
+    #container {
+      position: relative;
+      filter: url(#goo);
+    }
+
+    .text {
+      font-family: Anton, sans-serif;
+      font-size: 6rem;
+      z-index: 999;
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .drop {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+      animation: move 6s cubic-bezier(1, .04, .74, .2) infinite;
+    }
+
+    /* Adjusting the drops to align just above the "O"s */
+    .drop-left {
+      left: 45%; /* Adjusted to align with the first 'O' */
+      top: -40px; /* Positioned above the text */
+    }
+
+    .drop-right {
+      left: 55%; /* Adjusted to align with the second 'O' */
+      top: -40px; /* Positioned above the text */
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateY(-200%) scale(0.2);
+      }
+      30% {
+        transform: translateY(-100%) scale(1);
+      }
+      70% {
+        transform: translateY(100%) scale(1);
+      }
+      100% {
+        transform: translateY(300%) scale(0.2);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .animate-bounce {
+      animation: bounce 1.5s infinite;
+    }
+
+</style>
+<body>
+    <div class="flex flex-col space-y-5" >
+        <div id="container">
+            <div class="drop drop-left" style="animation-delay: 0s;"></div>
+            <div class="drop drop-right" style="animation-delay: 0.5s;"></div>
+            <p class="text">GET YOUR POOKIES</p>
+            <div class="drop drop-left" style="animation-delay: 1s;"></div>
+            <div class="drop drop-right" style="animation-delay: 1.5s;"></div>
+        </div>
+        <div class="flex justify-center space-x-3">
+          <input placeholder="Pokemon (fire, water ,etc..)" type="number" id="no" class="rounded-xl bg-white text-black p-3"/>
+          <button  class="bg-blue-500 hover:bg-blue-600 rounded-xl p-3 font-mono">Get the Pokemon</button>
+        </div>
+    </div>
+</body>
+</html>

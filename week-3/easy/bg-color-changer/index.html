@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<script>
+    function red(){
+        document.getElementById("color").className="bg-red-500 h-screen w-full flex justify-center items-end";
+    }
+    function blue(){
+        document.getElementById("color").className="bg-blue-500 h-screen w-full flex justify-center items-end";
+    }
+    function green(){
+        document.getElementById("color").className="bg-green-500 h-screen w-full flex justify-center items-end";
+    }
+    function yellow(){
+        document.getElementById("color").className="bg-yellow-500 h-screen w-full flex justify-center items-end";
+    }
+</script>
+<body>
+    <div id="color" class="bg-white h-screen w-full flex justify-center items-end">
+        <div class="flex space-x-3 mb-5 ">
+        <button onclick="red()" id="1" class="bg-red-500 rounded-xl text-white p-3 hover:bg-red-700">Red</button>
+        <button onclick="blue()" id="2" class="bg-blue-500 rounded-xl text-white p-3 hover:bg-blue-700">Blue</button>
+        <button onclick="green()" id="3" class="bg-green-500 rounded-xl text-white p-3 hover:bg-green-700">Green</button>
+        <button onclick="yellow()"id="4" class="bg-yellow-500 rounded-xl text-white p-3 hover:bg-yellow-700">Yellow</button>
+    </div>
+    </div>
+</body>
+</html>

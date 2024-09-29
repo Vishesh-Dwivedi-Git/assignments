@@ -1,0 +1,14 @@
+{
+  "name": "vishehs",
+  "version": "1.0.0",
+  "description": "Your task is to design and implement an application that display Pokémon Cards.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}
