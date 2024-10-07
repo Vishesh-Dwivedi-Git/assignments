@@ -7,7 +7,12 @@
     <title>Pokemon</title>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
     <link href="./output.css" rel="stylesheet">
+
+
+
+
 </head>
+
 <style>
     @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
@@ -100,6 +105,37 @@
     }
 
 </style>
+<script>
+  async function PokemonApi(){
+    const val=document.getElementById("no").value;
+    const type=document.getElementById("pok").value.toLowerCase();
+    const typeResponse= await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    if(!typeResponse.ok){
+         alert("Invalid Pokemon type. Please try again.");
+         return;
+    }
+    const data=await typeResponse.json();
+    const pokemonEntries=data.pokemon.slice(0,val);
+    
+    //clear the previous data 
+    document.getElementById("pokemonCont").innerHTML="";
+    
+    //each api fetch 
+    for(const entry of pokemonEntries){
+      const pokees=await fetch(entry.pokemon.url).then(resp=>resp.json());
+
+      //create element 
+      const Card=document.createElement("div");
+      Card.classList.add("text-white","flex","flex-col","items-center", "text-xl", "p-2", "bg-gray-700", "rounded-lg", "shadow-lg");
+      Card.id="pokCard";
+      document.getElementById("pokemonCont").appendChild(Card);
+      Card.innerHTML=`<h1>${pokees.name}</h1>`;
+      Card.innerHTML+=`<img src="${pokees.sprites.front_default}" alt="${pokees.name}" class="w-32 h-32" />`;
+    }
+}
+
+</script>
+
 <body>
     <div class="flex flex-col space-y-5" >
         <div id="container">
@@ -110,9 +146,19 @@
             <div class="drop drop-right" style="animation-delay: 1.5s;"></div>
         </div>
         <div class="flex justify-center space-x-3">
-          <input placeholder="Pokemon (fire, water ,etc..)" type="number" id="no" class="rounded-xl bg-white text-black p-3"/>
-          <button  class="bg-blue-500 hover:bg-blue-600 rounded-xl p-3 font-mono">Get the Pokemon</button>
+          <input placeholder="Enter the No" type="number" id="no" class="rounded-xl bg-white text-black p-3"/>
+          <input placeholder="Pokemon (fire, water ,etc..)" type="text" id="pok" class="rounded-xl bg-white text-black p-3"/>
+          <button onclick="PokemonApi()" class="bg-blue-500 hover:bg-blue-600 rounded-xl p-3 font-mono">Get the Pokemon</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 my-5 overflow-auto" id="pokemonCont" style="max-height: 60vh; width: 100%;">
+          <!-- Pokémon cards will be appended here -->
+      </div>
+      
+      
+             
         </div>
     </div>
 </body>
+
 </html>
+

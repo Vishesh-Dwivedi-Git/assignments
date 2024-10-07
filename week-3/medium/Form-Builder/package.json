@@ -1,0 +1,14 @@
+{
+  "name": "form-builder",
+  "version": "1.0.0",
+  "description": "- Your task is to a form builder that allows users to add different types of input fields dynamically. Include options for text inputs, checkboxes, and radio buttons. Each added field should be displayed in a preview area.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

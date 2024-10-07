@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+</head>
+<script>
+   function addField() {
+    // Create a new label and input field
+    const label = document.createElement("label");
+    label.className = "font-serif mb-2";
+    label.innerHTML = "Enter the detail";
+    
+    const input = document.createElement("input");
+    input.type = "text";
+    input.className = "w-full p-2 rounded-md text-black";
+    
+    const div = document.createElement("div");
+    div.className = "mt-2 flex flex-col space-y-2";
+    div.appendChild(label);
+    div.appendChild(input);
+    
+    // Append the newly created input field to the preview section
+    const inputDiv = document.getElementById("input");
+    inputDiv.appendChild(div);
+}
+
+function addCheck() {
+    const data = document.getElementById("data").value; // Get the checkbox label value
+    
+    const chkbox = document.createElement("input");
+    chkbox.type = "checkbox";
+    
+    const label = document.createElement("label");
+    label.innerHTML = data;
+    
+    const div = document.createElement("div");
+    div.className = "flex flex-row space-x-2";
+    div.appendChild(chkbox);
+    div.appendChild(label);
+    
+    // Append the new checkbox to the preview section
+    const checkboxDiv = document.getElementById("checkboc");
+    checkboxDiv.appendChild(div);
+}
+
+function submit() {
+    // Create a new submit button
+    const button = document.createElement("button");
+    button.className = "btn-primary";
+    button.innerHTML = "Submit";
+    
+    const div = document.createElement("div");
+    div.className = "flex justify-center mt-3";
+    div.appendChild(button);
+    
+    // Append the submit button to the preview section
+    const submitDiv = document.getElementById("submit");
+    submitDiv.appendChild(div);
+}
+
+</script>
+<body class="bg-black">
+  <div class="flex flex-col items-center bg-black w-full h-screen overflow-y-auto">
+    <div class="m-10">
+      <p class="text-3xl text-white font-sixtyfour">FORM BUILDER</p>
+    </div>
+    
+    <div class="flex flex-row justify-evenly items-center mt-10 mb-10 space-x-10 text-white"> <!-- Adjusted mb-5 to mb-10 -->
+      <!-- Left Section: Form Builder -->
+      <div class="flex flex-col border rounded-xl border-white text-white p-5 items-center min-h-96 min-w-96 flex-grow">
+        <p class="text-2xl font-sixtyfour mb-5">FORM BUILD</p>
+        <div class="flex flex-col items-center space-y-5">
+          
+          <!-- Input Field Section -->
+          <div class="flex flex-col rounded-xl p-5 border border-white w-80">
+            <label class="font-serif mb-2" id="label">Enter the detail</label>
+            <input type="text" class="w-full p-2 rounded-md text-black" id="inp"/>
+            <button class="btn-primary mt-3" onclick="addField()">Add Input field</button>
+          </div>
+
+          <!-- Checkbox Section -->
+          <div class="flex flex-col rounded-xl border border-white p-5 w-80">
+            <input type="checkbox" class="mb-3" id="chk"/>
+            <label class="mb-2">Enter the value for checkbox</label>
+            <input type="text" class="w-full p-2 rounded-md text-black" id="data"/>
+            <button class="btn-primary mt-3" onclick="addCheck()">Add Checkbox</button>
+          </div>
+
+          <!-- Submit Button Section -->
+          <div class="flex flex-col rounded-xl border border-white p-5 w-80">
+            <button class="btn-primary" id="sub">Submit</button>
+            <button class="btn-primary mt-3" onclick="submit()">Add Submit Button</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Section: Preview -->
+      <div class="flex flex-col rounded-xl border border-white text-white items-center min-h-96 min-w-96 flex-grow">
+      <div><p class="mt-2 font-sixtyfour">PREVIEW</p></div>
+      <div class="flex flex-col space-y-5 mb-3">
+      <div id="input" >
+
+      </div>
+      <div id="checkboc">
+
+      </div>
+      <div id="submit">
+
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tailwind Custom Classes -->
+  <style>
+    .font-sixtyfour {
+      font-family: 'Sixtyfour Convergence', sans-serif;
+    }
+    .btn-primary {
+      background-color: #1E3A8A;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+    }
+    .btn-primary:hover {
+      background-color: #2563EB;
+    }
+  </style>
+</body>
+</html>
